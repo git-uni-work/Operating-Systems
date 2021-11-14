@@ -27,12 +27,6 @@ mask for image sharpening, while optimizing the memory accesses in
 whatever way is needed – focus on efficient use of cache when using this
 particular mask.
 
-  ---- ---- ----
-  0    -1   0
-  -1   5    -1
-  0    -1   0
-  ---- ---- ----
-
 **If a value lies outside the limits of the interval \<0, 255\>, use the
 appropriate limit.** The pixels on the image’s edges shall be only
 copied from the original image (the situation where the convolution core
