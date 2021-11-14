@@ -7,44 +7,7 @@ Design a simple 32-bit processor connected to a separate instruction and data me
 
 #### Program S
 
-Write a program called S in the RISC-V assembly language that merges two images into one image. We will use image format described later. Program calls a subroutine merge() with the following C-language prototype:
-
-    int merge(int *inputImgA, int *inputImgB, int *outputImg);
-
-This subroutine should return the number of pixels of the output image. Use the RISC-V calling convention.
-
-Suppose that the input adresses for the subroutine are stored in the data memory at following adresses:
-
--   0x00000004: inputImgA
--   0x00000008: inputImgB
--   0x0000000C: outputImg
-
-For instance, at address 0x00000004 the address of inputImgA is stored (where the image begins).
-
-After returning from the subroutine, program should write the returned result (i.e. the number of pixels of the output image) into the data memory at address of 0x00000010.
-
-Translate program S from the RISC-V assembly language into the machine code of your CPU design.
-
-**Image format:** Image starts with a header consisting of a 4-byte signature 0x5350412e (i.e. ".APS" in ASCII) followed by image width (4 bytes) and image height (4 bytes). After the header, comes a series of individual pixels. Each pixel (4 bytes) encodes red, green, blue and alpha channel (in this ordering), each of which is 1 byte long (8 bits). Red channel is encoded in LSB, whereas alpha channel is encoded in MSB.
-
-An example of the 2x3 image in hexadecimal:
-
-    5350412e
-    00000002
-    00000003
-    11223300
-    2200aaff
-    00ffff00
-    03565654
-    1b459748
-    ecf39baa
-
-**Algorithm:** For every pixel of the output image:
-
--   set aplha channel to 0xFF
--   output color channel (i.e., red, green and blue) is computed as the sum of corresponding channels of the input pixels. There is no need to treat overflow (i.e. if the sum is greather than 0xFF, only lower 8 bits are used).
-
-Only the images with the same size can be merged. Input images have always the same size (no need to test it).
+Write a program called S in the RISC-V assembly language that sorts a certain index of memory locations
 
 ###### Important:
 
