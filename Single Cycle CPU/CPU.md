@@ -32,7 +32,7 @@ Use the following template:
 
 You can use the MARS simulator to generate the machine code of program S. See figure bellow. Note: MARS implements RISC-V ISA, which slightly differs from picoMIPS ISA - see the definition of instructions described above (there is no addu.qb instruction).
 
-![MARS 01](./CPU_files/MARS_01.png)
+![MARS 01](./mars.png)
 
 You can use the following Verilog modules to represent the whole computer system. If the data and instruction memory arrays of vectors are not large enough, extend them. However, please **do not** include them into the **Surname\_FirstName\_CPU.v** file.
 
