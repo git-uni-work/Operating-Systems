@@ -1,5 +1,4 @@
 # " SINGLE-CYCLE CPU DESIGN " 
-============================================
 
 Design a simple 32-bit processor connected to a separate instruction and data memory. The processor has to implement instructions given in the table bellow. Suppose that the processor starts the execution from the beginning of instruction memory (0x00000000).
 
