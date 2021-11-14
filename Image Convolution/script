@@ -1,0 +1,43 @@
+#!/bin/bash
+
+i_refs=$(cat log.txt | grep "I   refs:" | cut -d '=' -f5 | cut -d ':' -f2 | cut -d '(' -f1 | awk '{$1=$1};1' | tr -d ,)
+d_refs=$(cat log.txt | grep "D   refs:" | cut -d '=' -f5 | cut -d ':' -f2 | cut -d '(' -f1 | awk '{$1=$1};1' | tr -d ,)
+ll_refs=$(cat log.txt | grep "LL refs:" | cut -d '=' -f5 | cut -d ':' -f2 | cut -d '(' -f1 | awk '{$1=$1};1' | tr -d ,)
+
+i1_mr=$(cat log.txt | grep "I1  miss rate:" | cut -d '=' -f5 | cut -d ':' -f2 | cut -d '(' -f1 | cut -d '%' -f1 | awk '{$1=$1};1')
+lli_mr=$(cat log.txt | grep "LLi miss rate:" | cut -d '=' -f5 | cut -d ':' -f2 | cut -d '(' -f1 | cut -d '%' -f1 | awk '{$1=$1};1')
+d1_mr=$(cat log.txt | grep "D1  miss rate:" | cut -d '=' -f5 | cut -d ':' -f2 | cut -d '(' -f1 | cut -d '%' -f1 | awk '{$1=$1};1')
+lld_mr=$(cat log.txt | grep "LLd miss rate:" | cut -d '=' -f5 | cut -d ':' -f2 | cut -d '(' -f1 | cut -d '%' -f1 | awk '{$1=$1};1')
+
+ll_mr=$(cat log.txt | grep "LL miss rate:" | cut -d '=' -f5 | cut -d ':' -f2 | cut -d '(' -f1 | cut -d '%' -f1 | awk '{$1=$1};1')
+
+l1_lat=0.00000000125
+l2_lat=0.00000000203
+ram_lat=0.000000144
+
+amat_d=$(echo "$l1_lat + $d1_mr * ( $l2_lat + ( $lld_mr * $ram_lat ) )" | bc)
+amat_i=$( echo "$l1_lat + $i1_mr * ( $l2_lat + ( $lli_mr * $ram_lat ) )" | bc)
+
+cost=$( echo "( $amat_i * $i_refs ) + ( $amat_d * $d_refs )" | bc)
+cost_min=2
+cost_max=9
+result=$( echo "10 * (( $cost_max - $cost ) / ( $cost_max - $cost_min ))" | bc)
+
+# echo "L1 LATENCY = $l1_lat"
+# echo "L2 LATENCY = $l2_lat"
+# echo "RAM LATENCY = $ram_lat"
+# echo "I REFS = $i_refs"
+# echo "I1 MR = $i1_mr"
+# echo "LLI MR = $lli_mr"
+# echo "D REFS = $d_refs"
+# echo "D1 MR = $d1_mr"
+# echo "LLD MR = $lld_mr"
+# echo "LL REFS = $ll_refs"
+# echo "LL MR = $ll_mr"
+echo "====================="
+echo "AMAT D = $amat_d"
+echo "AMAT I = $amat_i"
+echo "COST = $cost"
+echo "====================="
+printf "RESULT = %.3f\n" "$result"
+echo "====================="
