@@ -98,6 +98,3 @@ The customers delay their answers when queried by `CCustomer::Query` (e.g. 100 m
 
 **[Load balance test]**  
 The test environment tries, whether the computation of a single problem engages more than one thread. There is just one ship to process, the ship's capacity is big and the cargo list is long. The testing environment checks that the computation time decreases when the number of worker threads increases. This test is a bonus test. Function `ProgtestSolver` returns invalid results in this test (an empty cargo list is returned). You have to implement the function yourself to pass the test.
-
-**Update 2021-03-06:** your program may forget the cargo that is quoted by the customers, but not loaded. Since no two ship head to the same destination, there is not any use for such cargo.
-
