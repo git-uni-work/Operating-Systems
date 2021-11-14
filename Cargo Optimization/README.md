@@ -75,28 +75,28 @@ You can use pthread or C++11 thread API for your implementation (see available \
 
 **What do the particular tests mean:**
 
-**Test algoritmu (sekvencni) [Algorithm test]**  
+**[Algorithm test]**  
 The test environment calls methods `SeqSolver()` for various inputs and checks the computed results. The purpose of the test is to check your algorithm. No instance of `CCargoPlanner` is created, no `Start` method is called. You can check whether your implementation is fast enough with this test. The test data are randomly generated.
 
-**Základní test [Basic test]**  
+**[Basic test]**  
 The test environment creates an instance of `CCargoPlanner` for different number of salesperson threads (S=xxx), worker threads (W=xxx), and customers (C=xxx).
 
-**Základní test, prubezna obsluha lodi [continuous ship service]**  
+**[continuous ship service]**  
 The test is similar to the basic test, moreover, the test checks that ships are served continuously. If they are not, the test ends in a deadlock (efficiently, it exceeds the time limit).
 
-**Základní test, prubezna obsluha zakazniku [continuous customer service]**  
+**[continuous customer service]**  
 The test is similar to the basic test, moreover, the test checks whether the salesperson threads are dynamically dispatched to serve the registered customers. If the salesperson threads are not dispatched dynamically, the test ends up in a deadlock (exceeds time limit).
 
-**Test zrychleni vypoctu [Speedup test]**  
+**[Speedup test]**  
 The test environment runs your implementation with a various number of worker threads using the same input data. The test measures the time required for the computation (wall and CPU times). As the number of worker threads increases, the wall time should decrease, and CPU time can slightly increase (the number of worker threads is below the number of physical CPU cores). If the wall time does not decrease or does not decrease enough, the test is failed. For example, the wall time shall drop to 0.5 of the sequential time if two worker threads are used. In reality, the speedup will not be 2. Therefore, there is some tolerance in the comparison.
 
-**Busy waiting (pomale lode) [Busy waiting - slow ships]**  
+**Busy waiting [Busy waiting - slow ships]**  
 There is a sleep call inserted between the calls to `CCargoPlanner::Ship` (e.g. 100 ms sleep). If the salesperson/worker threads are not synchronized/blocked properly, CPU time is increased, and the test fails.
 
-**Busy waiting (pomali zakaznici) [Busy waiting - slow customers]**  
+**Busy waiting [Busy waiting - slow customers]**  
 The customers delay their answers when queried by `CCustomer::Query` (e.g. 100 ms sleep). Worker threads then do not have anything to do. If worker threads are not synchronized/blocked properly, CPU time increases and the test fails.
 
-**Test rozlozeni zateze [Load balance test]**  
+**[Load balance test]**  
 The test environment tries, whether the computation of a single problem engages more than one thread. There is just one ship to process, the ship's capacity is big and the cargo list is long. The testing environment checks that the computation time decreases when the number of worker threads increases. This test is a bonus test. Function `ProgtestSolver` returns invalid results in this test (an empty cargo list is returned). You have to implement the function yourself to pass the test.
 
 **Update 2021-03-06:** your program may forget the cargo that is quoted by the customers, but not loaded. Since no two ship head to the same destination, there is not any use for such cargo.
