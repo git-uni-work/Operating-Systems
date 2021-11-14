@@ -1,41 +1,9 @@
--   Logged in user
-    [samymbas](https://courses.fit.cvut.cz/BIE-APS/tutorials/08/seminar_project.html#)
-    -   Log out
--   Log in
+# " IMAGE CONVOLUTION "
 
-[FIT CTU Course Pages](https://courses.fit.cvut.cz/)
-
-BIE-APS — Architectures of Computer Systems
-
--   [](https://courses.fit.cvut.cz/BIE-APS/tutorials/08/seminar_project.html#)
-     Past semesters
-    -   [B101](https://courses.fit.cvut.cz/BIE-APS/@B101/)
-    -   [B131](https://courses.fit.cvut.cz/BIE-APS/@B131/)
-    -   [B141](https://courses.fit.cvut.cz/BIE-APS/@B141/)
-    -   [B151](https://courses.fit.cvut.cz/BIE-APS/@B151/)
-    -   [B161](https://courses.fit.cvut.cz/BIE-APS/@B161/)
-    -   [B171](https://courses.fit.cvut.cz/BIE-APS/@B171/)
-    -   [B181](https://courses.fit.cvut.cz/BIE-APS/@B181/)
-    -   [B201](https://courses.fit.cvut.cz/BIE-APS/@B201/)
-    -   [master](https://courses.fit.cvut.cz/BIE-APS/)
--   [](https://gitlab.fit.cvut.cz/BI-APS/bie-aps/blob/master/tutorials/08/seminar_project.adoc)
-     View on GitLab
--   [](https://gitlab.fit.cvut.cz/BI-APS/bie-aps/issues/new?issue[title]=tutorials/08/seminar_project.adoc:%20)
-     Report issue
-
-[Go to course
-navigation](https://courses.fit.cvut.cz/BIE-APS/tutorials/08/seminar_project.html#nav)
-
-Seminar project \#2: Cache access optimization
+Cache access optimization
 ==============================================
 
-[](https://courses.fit.cvut.cz/BIE-APS/tutorials/08/seminar_project.html#_seminar-project-2-cache-access-optimization)Seminar project \#2: Cache access optimization {#_seminar-project-2-cache-access-optimization}
---------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-Short tutorial:
-[https://youtu.be/jc1HzQLP6GM](https://youtu.be/jc1HzQLP6GM)
-
-#### [](https://courses.fit.cvut.cz/BIE-APS/tutorials/08/seminar_project.html#_introduction)Introduction {#_introduction}
+#### Introduction 
 
 You are an employee of an IT firm and you are a member of a team that
 develops an image editor (Photoshop, Gimp …​). In order to gain
@@ -52,7 +20,7 @@ is to compute the histogram.\
 How convolution works, see here:
 [http://setosa.io/ev/image-kernels/](http://setosa.io/ev/image-kernels/)
 
-#### [](https://courses.fit.cvut.cz/BIE-APS/tutorials/08/seminar_project.html#_task)Task {#_task}
+#### Task
 
 Your homework will be to implement only the below mentioned convolution
 mask for image sharpening, while optimizing the memory accesses in
@@ -85,7 +53,7 @@ In other words, divide the interval \<0; 255\> into the following bins:
   Count:                                                   
   -------- --------- ----------- ------------ ------------ ------------
 
-#### [](https://courses.fit.cvut.cz/BIE-APS/tutorials/08/seminar_project.html#_input-data)Input data {#_input-data}
+#### Input data 
 
 The input image will be in the binary encoded [portable pixmap format
 (PPM)](http://en.wikipedia.org/wiki/Netpbm_format). An image in this
@@ -94,19 +62,19 @@ Next, the constant 255 (maximum intensity of a given pixel component),
 followed by the main image data - individual RGB components for each
 pixel. Every pixel component (R, G, B) occupies one byte.
 
-[vit-small.zip](https://courses.fit.cvut.cz/BI-APS/@master/media/tutorials/08/vit-small.zip)
-[vit-normal.zip](https://courses.fit.cvut.cz/BI-APS/@master/media/tutorials/08/vit-normal.zip)
+[vit-small.zip]
+[vit-normal.zip]
 
 **The input image file name will be passed on the command line** – see
 the parameters of the main function: main(int argc, char \* \*argv).
 
-#### [](https://courses.fit.cvut.cz/BIE-APS/tutorials/08/seminar_project.html#_output-of-the-program)Output of the program {#_output-of-the-program}
+#### Output of the program 
 
 Output of your program will be the focused image in the file named
 **output.ppm**, and the histogram (luminance counts separated by spaces)
 in the file **output.txt**.
 
-#### [](https://courses.fit.cvut.cz/BIE-APS/tutorials/08/seminar_project.html#_homework-evaluation-criteria)Homework evaluation criteria {#_homework-evaluation-criteria}
+#### Evaluation criteria 
 
 Your program will be evaluated by the total accesses of data L1,
 instruction L1, shared L2 caches, and foremost, by the number of misses
@@ -164,18 +132,6 @@ size of vit\_normal.ppm, 64-bit Ubuntu, gcc 4.8.4.**
 
 Total maximum point score for this project is 15 points.
 
-#### [](https://courses.fit.cvut.cz/BIE-APS/tutorials/08/seminar_project.html#_homework-submission)Homework submission {#_homework-submission}
-
-Your program must be written in C or C++ without external libraries. The
-image format is chosen so that its loading can be easily programmed in a
-few lines of code. The program can be optimized for compilation on a 32
-and 64 bit Intel x86 architecture. Compilation and testing will be done
-in an environment similar to that in the lab computers (on Linux).
-
-Use
-[http://biaps.fit.cvut.cz/second\_semestral\_project/index.php](http://biaps.fit.cvut.cz/second_semestral_project/index.php)
-to upload your solution in ZIP archive including file `main.c` (if you
-used C), or `main.cpp` (if C++).
 
 ###### Tip: {.block-title .label-only}
 
@@ -196,7 +152,7 @@ people will be punished without discrimination).
 separated by single spaces. The last number must not be followed by
 anything (not even a newline).
 
-#### [](https://courses.fit.cvut.cz/BIE-APS/tutorials/08/seminar_project.html#_hint)Hint {#_hint}
+#### Hint
 
 The Cost used to evaluate your solution is directly coupled to the
 program’s execution speed (faster program means lower cost). Measuring
@@ -232,8 +188,6 @@ tool. Example:
 where filename is the file generated by cachegrind. Use the absolute
 path to your source file (main.cpp).
 
-[Test image 10 x
-8](https://courses.fit.cvut.cz/BI-APS/@master/media/tutorials/08/test-10x8.zip)
 
 ###### Important: {.block-title .label-only}
 
@@ -242,67 +196,3 @@ For vit\_small.ppm, the otput file md5 sum is
 same as the header of the input file – a whitespace used to separate
 individual items of the header is \\n. Histogram starts with: 24432,
 16307, 15192. Next two numbers are not shown here.
-
-You’re browsing the **...** version.\
- [Go to the latest version.](https://courses.fit.cvut.cz/BIE-APS/)
-
-Course navigation
-=================
-
--   [](https://courses.fit.cvut.cz/BIE-APS/index.html)
-    BIE-APS - News
--   [](https://courses.fit.cvut.cz/BIE-APS/classification/index.html)
-    Evaluation, assessment, exam, and grading
--   [](https://courses.fit.cvut.cz/BIE-APS/lectures/index.html)
-    Lectures
--   [](https://courses.fit.cvut.cz/BIE-APS/news/index.html)
-    News
--   [](https://courses.fit.cvut.cz/BIE-APS/tutorials/index.html)
-    Seminars
-    -   [](https://courses.fit.cvut.cz/BIE-APS/tutorials/01/index.html)
-        1. Seminar - Computer Performance Measurement
-    -   [](https://courses.fit.cvut.cz/BIE-APS/tutorials/02/index.html)
-        2. Seminar - ISA and the RISC-V assembly language
-    -   [](https://courses.fit.cvut.cz/BIE-APS/tutorials/03/index.html)
-        3. Programming in assembly language for RISC-V: calling
-        convention, instruction encoding and machine code generation.
-    -   [](https://courses.fit.cvut.cz/BIE-APS/tutorials/04/index.html)
-        4. Hardware description language (Verilog)
-    -   [](https://courses.fit.cvut.cz/BIE-APS/tutorials/05/index.html)
-        5. Seminar - Basic computer components II, Single cycle CPU
-        -   [](https://courses.fit.cvut.cz/BIE-APS/tutorials/05/semester_project.html)
-            Seminar project \#1: Single-cycle CPU design
-    -   [](https://courses.fit.cvut.cz/BIE-APS/tutorials/06/index.html)
-        6. Seminar - Pipelined microarchitecture
-    -   [](https://courses.fit.cvut.cz/BIE-APS/tutorials/07/index.html)
-        7. Seminar - Cache - Introduction
-    -   [](https://courses.fit.cvut.cz/BIE-APS/tutorials/08/index.html)
-        8. Seminar - Cache - Accessing memory from C programs, Virtual
-        memory
-        -   [](https://courses.fit.cvut.cz/BIE-APS/tutorials/08/seminar_project.html)
-            Seminar project \#2: Cache access optimization
-    -   [](https://courses.fit.cvut.cz/BIE-APS/tutorials/09/index.html)
-        9. Seminar - Cache - Coherence and coherence protocols,
-        Explanation of MESI protocol
-    -   [](https://courses.fit.cvut.cz/BIE-APS/tutorials/10/index.html)
-        10. Seminar - Memory consistency and multithreaded programs
-    -   [](https://courses.fit.cvut.cz/BIE-APS/tutorials/11/index.html)
-        11. Seminar - Sequential consistency
-    -   [](https://courses.fit.cvut.cz/BIE-APS/tutorials/12/index.html)
-        12. Seminar - Superscalar processors, Evaluation of assignments,
-        credit
--   [](https://courses.fit.cvut.cz/BIE-APS/teacher/index.html)
-    Teachers
-
-Seminar project \#2: Cache access optimization \
-
-[tutorials/08/seminar\_project.adoc](https://gitlab.fit.cvut.cz/BI-APS/bie-aps/blob/master/tutorials/08/seminar_project.adoc),
-[last change 4e7caaa8 (2020-11-26 at 20:46, Ing. Michal Štepanovský,
-Ph.D)](https://gitlab.fit.cvut.cz/BI-APS/bie-aps/commit/4e7caaa8516147f860b386225247c20992dda3f3 "Update tutorials/08/seminar_project.adoc")
-
-Generated with [**FIT CTU Course
-Pages**](https://gitlab.fit.cvut.cz/course-pages/course-pages/) v0.8.0 \
- Page generated at 2021-11-11 at 18:40
-
-[![Build
-status](./Image_files/pipeline.svg)](https://gitlab.fit.cvut.cz/BI-APS/bie-aps/pipelines)
